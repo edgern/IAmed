@@ -65,7 +65,7 @@ function Login() {
             value={password}
             ref={passwordRef}
             label='Senha'
-            keyboardType='email'
+            keyboardType='email-address'
             textContentType='password'
             autoCapitalize='none'
             returnKeyType='done'

@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
-import { SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Calendar from '../components/calendar/Calendar';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({navigation}) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#394d69' }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#394d69'}}>
       <Calendar
-        onSelectDate={(date) => setSelectedDate(date)}
+        onSelectDate={date => setSelectedDate(date)}
         selected={selectedDate}
       />
 
@@ -20,9 +25,7 @@ const HomeScreen = ({ navigation }) => {
           alignItems: 'center',
           backgroundColor: '#394d69',
         }}>
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => navigation.navigate('NewMed')}>
+        <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddMed')}>
           <Entypo name="plus" size={50} color="#fff" />
         </TouchableOpacity>
       </View>
