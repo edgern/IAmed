@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Calendar from '../components/calendar/Calendar';
 
@@ -7,13 +7,11 @@ const HomeScreen = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{ backgroundColor: '#394d69' }}>
-        <Calendar
-          onSelectDate={(date) => setSelectedDate(date)}
-          selected={selectedDate}
-        />
-      </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#394d69' }}>
+      <Calendar
+        onSelectDate={(date) => setSelectedDate(date)}
+        selected={selectedDate}
+      />
 
       <View
         style={{
@@ -28,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
           <Entypo name="plus" size={50} color="#fff" />
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
