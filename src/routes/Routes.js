@@ -1,7 +1,7 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useSelector} from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useSelector } from 'react-redux';
 
 import Login from '../screens/Login';
 
@@ -21,7 +21,7 @@ export default function Routes() {
             <Stack.Screen
               name="Home"
               component={Home}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen name="AddMed" component={AddMed} />
           </>
@@ -30,7 +30,7 @@ export default function Routes() {
             <Stack.Screen
               name="Login"
               component={Login}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
           </>
         )}

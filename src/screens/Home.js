@@ -1,18 +1,33 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   SafeAreaView,
-  StyleSheet,
+  Text,
   TouchableOpacity,
+  FlatList,
+  StyleSheet
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Calendar from '../components/calendar/Calendar';
+import { useSelector } from 'react-redux';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
+  const medList = useSelector(state => state.med.medList);
+
   const [selectedDate, setSelectedDate] = useState(null);
 
+  const keyExtractor = (item) => item.id;
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={{ backgroundColor: '#aaa' }}>
+        <Text>{item.nome}</Text>
+      </View>
+    )
+  }
+
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#394d69'}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#394d69' }}>
       <Calendar
         onSelectDate={date => setSelectedDate(date)}
         selected={selectedDate}
@@ -21,10 +36,14 @@ const HomeScreen = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
+          paddingHorizontal: 10,
           backgroundColor: '#394d69',
         }}>
+        <FlatList
+          data={medList}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+        />
         <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddMed')}>
           <Entypo name="plus" size={50} color="#fff" />
         </TouchableOpacity>
