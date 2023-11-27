@@ -87,16 +87,14 @@ const AddMed = ({ navigation }) => {
       </TouchableOpacity>
 
       <RNPickerSelect
-        placeholder={{ label: 'Intervalo', value: '' }}
+        placeholder={{ label: 'Intervalo entre doses', value: '' }}
         onValueChange={(value) => setIntervalo(value)}
         items={[
-          { label: '1', value: 1 },
-          { label: '2', value: 2 },
-          { label: '3', value: 4 },
-          { label: '3', value: 6 },
-          { label: '3', value: 8 },
-          { label: '3', value: 12 },
-          { label: '3', value: 24 },
+          { label: '4 em 4 horas', value: 4 },
+          { label: '6 em 6 horas', value: 6 },
+          { label: '8 em 8 horas', value: 8 },
+          { label: '12 em 12 horas', value: 12 },
+          { label: '24 em 24 horas', value: 24 },
         ]}
         value={intervalo}
         useNativeAndroidPickerStyle={false}
@@ -120,12 +118,12 @@ const AddMed = ({ navigation }) => {
         placeholder={{ label: 'Compartimento', value: '' }}
         onValueChange={(value) => setQuantidadeDoses(value)}
         items={[
-          { label: '1', value: 1 },
-          { label: '2', value: 2 },
-          { label: '3', value: 3 },
-          { label: '4', value: 4 },
-          { label: '5', value: 5 },
-          { label: '6', value: 6 },
+          { label: 'A', value: 1 },
+          { label: 'B', value: 2 },
+          { label: 'C', value: 3 },
+          { label: 'D', value: 4 },
+          { label: 'E', value: 5 },
+          { label: 'F', value: 6 },
         ]}
         value={quantidadeDoses}
         useNativeAndroidPickerStyle={false}
