@@ -9,7 +9,11 @@ import {
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
+import { useDispatch } from 'react-redux';
+import uuid from 'react-uuid';
 import moment from 'moment';
+
+import { addMed } from '../redux/slices/medSlice'
 
 const AddMed = ({ navigation }) => {
   const [nome, setNome] = useState('');
@@ -17,22 +21,21 @@ const AddMed = ({ navigation }) => {
   const [intervalo, setIntervalo] = useState('');
   const [quantidadeDoses, setQuantidadeDoses] = useState('');
   const [compartimento, setCompartimento] = useState('');
-
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleAddMedication = () => {
-    // Add your logic to handle adding medication
-    // You can use the values of nome, horarioInicial, intervalo, quantidadeDoses, compartimento
-    // For example, you can log them for now
-    console.log({
+    const med = {
+      id: uuid(),
       nome,
       horarioInicial,
       intervalo,
       quantidadeDoses,
       compartimento,
-    });
+    }
 
-    // Add navigation logic to go back to the previous screen
+    dispatch(addMed(med));
     navigation.goBack();
   };
 
@@ -62,9 +65,10 @@ const AddMed = ({ navigation }) => {
             paddingHorizontal: 5
           }}
           inputStyles={{
-            color: '#000',
+            height: 40,
             paddingHorizontal: 10,
             marginTop: 10,
+            color: '#000'
           }}
         />
       </View>
@@ -100,7 +104,7 @@ const AddMed = ({ navigation }) => {
         ]}
         value={intervalo}
         useNativeAndroidPickerStyle={false}
-        textInputProps={{ height: 40, marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderRadius: 5, borderColor: '#CCC' }}
+        textInputProps={{ height: 40, marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderRadius: 5, borderColor: '#CCC', color: '#000' }}
       />
 
       <RNPickerSelect
@@ -113,7 +117,7 @@ const AddMed = ({ navigation }) => {
         ]}
         value={compartimento}
         useNativeAndroidPickerStyle={false}
-        textInputProps={{ height: 40, marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderRadius: 5, borderColor: '#CCC' }}
+        textInputProps={{ height: 40, marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderRadius: 5, borderColor: '#CCC', color: '#000' }}
       />
 
       <RNPickerSelect
@@ -129,7 +133,7 @@ const AddMed = ({ navigation }) => {
         ]}
         value={quantidadeDoses}
         useNativeAndroidPickerStyle={false}
-        textInputProps={{ height: 40, marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderRadius: 5, borderColor: '#CCC' }}
+        textInputProps={{ height: 40, marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderRadius: 5, borderColor: '#CCC', color: '#000' }}
       />
 
       <TouchableOpacity style={styles.addButton} onPress={handleAddMedication}>
