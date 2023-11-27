@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "209483907982",
+    "project_id": "healthbox-1a5f4",
+    "storage_bucket": "healthbox-1a5f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209483907982:android:84dffd2323535105039adf",
+        "android_client_info": {
+          "package_name": "com.iamed"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkArIqZgKG1z9YUd5SEUBQf6zD0UbEwfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

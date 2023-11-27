@@ -1,15 +1,55 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   SafeAreaView,
-  StyleSheet,
+  Text,
   TouchableOpacity,
+  FlatList,
+  StyleSheet,
+  PermissionsAndroid,
+  Alert,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Calendar from '../components/calendar/Calendar';
+import {useSelector} from 'react-redux';
+import messaging from '@react-native-firebase/messaging';
 
 const HomeScreen = ({navigation}) => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const medList = useSelector(state => state.med.medList);
+
+  useEffect(() => {
+    PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+    );
+    checkUserToken();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert(
+        remoteMessage.notification.title,
+        remoteMessage.notification.body,
+      );
+    });
+
+    return unsubscribe;
+  }, []);
+  const keyExtractor = item => item.id;
+
+  const renderItem = ({item}) => {
+    return (
+      <View style={{backgroundColor: '#aaa'}}>
+        <Text>{item.nome}</Text>
+      </View>
+    );
+  };
+
+  const checkUserToken = async () => {
+    const firebaseMessageToken = await messaging().getToken();
+    if (firebaseMessageToken)
+      console.log('firebaseMessageToken', firebaseMessageToken);
+  };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#394d69'}}>
@@ -21,11 +61,17 @@ const HomeScreen = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
+          paddingHorizontal: 10,
           backgroundColor: '#394d69',
         }}>
-        <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddMed')}>
+        <FlatList
+          data={medList}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+        />
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => navigation.navigate('AddMed')}>
           <Entypo name="plus" size={50} color="#fff" />
         </TouchableOpacity>
       </View>
