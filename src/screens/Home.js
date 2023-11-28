@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   SafeAreaView,
@@ -9,12 +9,13 @@ import {
   PermissionsAndroid,
   Alert,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Calendar from '../components/calendar/Calendar';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import messaging from '@react-native-firebase/messaging';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const medList = useSelector(state => state.med.medList);
 
@@ -35,15 +36,6 @@ const HomeScreen = ({navigation}) => {
 
     return unsubscribe;
   }, []);
-  const keyExtractor = item => item.id;
-
-  const renderItem = ({item}) => {
-    return (
-      <View style={{backgroundColor: '#aaa'}}>
-        <Text>{item.nome}</Text>
-      </View>
-    );
-  };
 
   const checkUserToken = async () => {
     const firebaseMessageToken = await messaging().getToken();
@@ -51,8 +43,18 @@ const HomeScreen = ({navigation}) => {
       console.log('firebaseMessageToken', firebaseMessageToken);
   };
 
+  const keyExtractor = item => item.id;
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.todayMed}>
+        <Text>{item.nome}</Text>
+      </View>
+    );
+  };
+
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#394d69'}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#1a0b21' }}>
       <Calendar
         onSelectDate={date => setSelectedDate(date)}
         selected={selectedDate}
@@ -62,18 +64,21 @@ const HomeScreen = ({navigation}) => {
         style={{
           flex: 1,
           paddingHorizontal: 10,
-          backgroundColor: '#394d69',
         }}>
         <FlatList
           data={medList}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
         />
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => navigation.navigate('AddMed')}>
-          <Entypo name="plus" size={50} color="#fff" />
-        </TouchableOpacity>
+        <LinearGradient
+          style={styles.addButtonContainer}
+          colors={['#f67b5b', '#f6584e', '#f53f43']}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}>
+          <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddMed')}>
+            <Entypo name="plus" size={50} color="#fff" />
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
     </SafeAreaView>
   );
@@ -85,14 +90,35 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 1,
   },
-  addButton: {
+  todayMed: {
+    padding: 5,
+    backgroundColor: '#fff',
+    height: 60,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  addButtonContainer: {
     position: 'absolute',
     bottom: 30,
     right: 30,
     borderRadius: 100,
-    backgroundColor: '#9dd1bb',
     width: 75,
     height: 75,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#f67458',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+
+  addButton: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
