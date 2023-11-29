@@ -3,6 +3,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Keyboard} from 'react-native';
 import {FloatingLabelInput} from 'react-native-floating-label-input';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
+import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch} from 'react-redux';
 import uuid from 'react-uuid';
 import moment from 'moment';
@@ -35,7 +36,7 @@ const AddMed = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Adicionar</Text>
+      <Text style={styles.title}>Novo medicamento</Text>
 
       <View style={{marginBottom: 10}}>
         <FloatingLabelInput
@@ -48,14 +49,15 @@ const AddMed = ({navigation}) => {
           onChangeText={setNome}
           containerStyles={{
             borderWidth: 1,
-            borderColor: '#CCC',
+            borderColor: '#f6584e',
+            backgroundColor: '#24132a',
             borderRadius: 5,
             height: 40,
           }}
           customLabelStyles={{
             leftFocused: 5,
-            colorBlurred: '#CCC',
-            colorFocused: '#CCC',
+            colorBlurred: '#605263',
+            colorFocused: '#605263',
           }}
           labelStyles={{
             paddingHorizontal: 5,
@@ -64,7 +66,7 @@ const AddMed = ({navigation}) => {
             height: 40,
             paddingHorizontal: 10,
             marginTop: 10,
-            color: '#000',
+            color: '#fff',
           }}
         />
       </View>
@@ -82,7 +84,7 @@ const AddMed = ({navigation}) => {
       <TouchableOpacity
         style={[styles.input, {justifyContent: 'center'}]}
         onPress={() => setDatePickerVisibility(true)}>
-        <Text style={{color: horarioInicial ? '#000' : '#CCC'}}>
+        <Text style={{color: horarioInicial ? '#fff' : '#605263'}}>
           {horarioInicial ? horarioInicial : 'Horário inicial'}
         </Text>
       </TouchableOpacity>
@@ -105,8 +107,9 @@ const AddMed = ({navigation}) => {
           paddingHorizontal: 10,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#CCC',
-          color: intervalo.length === 0 ? '#ccc' : '#000',
+          borderColor: '#f6584e',
+          backgroundColor: '#24132a',
+          color: intervalo.length === 0 ? '#605263' : '#fff',
         }}
       />
 
@@ -126,8 +129,9 @@ const AddMed = ({navigation}) => {
           paddingHorizontal: 10,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#CCC',
-          color: quantidadeDoses.length === 0 ? '#ccc' : '#000',
+          borderColor: '#f6584e',
+          backgroundColor: '#24132a',
+          color: quantidadeDoses.length === 0 ? '#605263' : '#fff',
         }}
       />
 
@@ -150,14 +154,22 @@ const AddMed = ({navigation}) => {
           paddingHorizontal: 10,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#CCC',
-          color: compartimento.length === 0 ? '#ccc' : '#000',
+          borderColor: '#f6584e',
+          backgroundColor: '#24132a',
+          color: compartimento.length === 0 ? '#605263' : '#fff',
         }}
       />
-
-      <TouchableOpacity style={styles.addButton} onPress={handleAddMedication}>
-        <Text style={styles.addButtonText}>Adicionar</Text>
-      </TouchableOpacity>
+      <LinearGradient
+        style={styles.addButtonContainer}
+        colors={['#f67b5b', '#f6584e', '#f53f43']}
+        start={{x: 1, y: 0}}
+        end={{x: 0, y: 1}}>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={handleAddMedication}>
+          <Text style={styles.addButtonText}>Adicionar</Text>
+        </TouchableOpacity>
+      </LinearGradient>
     </View>
   );
 };
@@ -166,16 +178,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#1a0b21',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#fff',
   },
   input: {
+    backgroundColor: '#24132a',
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#f6584e',
     borderRadius: 5,
     height: 40,
     marginBottom: 10,
@@ -185,11 +199,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
   },
-  addButton: {
-    backgroundColor: '#9dd1bb',
+  addButtonContainer: {
+    marginTop: 15,
+    height: 50,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 15,
     alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#f67458',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
+  },
+  addButton: {
+    width:'100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   addButtonText: {
     color: '#fff',
