@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux';
 
 import {login, setUserEmail} from '../redux/slices/userSlice';
 
-const logo = require('../assets/logo.jpeg');
+const logo = require('../assets/slogan.png');
 
 function Login() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function Login() {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#1a0b21'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F7F7F5'}}>
       <View style={{flex: 1, paddingTop: '5%', paddingHorizontal: '5%'}}>
         <View style={{alignItems: 'center'}}>
           <Image style={{height: 200}} source={logo} resizeMode="contain" />
@@ -32,7 +32,7 @@ function Login() {
             style={{
               fontSize: 18,
               fontWeight: 'bold',
-              color: '#fff',
+              color: '#000',
               marginBottom: 20,
               marginLeft: 10,
             }}>
@@ -50,13 +50,12 @@ function Login() {
             }}
             minLength={6}
             maxLength={100}
-            selectionColor={'#f6584e'}
             onChangeText={text => setEmail(text)}
             containerStyles={{
               borderWidth: 1,
               paddingHorizontal: 5,
-              backgroundColor: '#24132a',
-              borderColor: '#f6584e',
+              backgroundColor: '#DFDFDF',
+              borderColor: '#66b5ac',
               borderRadius: 8,
               height: 50,
             }}
@@ -69,7 +68,7 @@ function Login() {
               paddingHorizontal: 5,
             }}
             inputStyles={{
-              color: '#fff',
+              color: '#000',
               paddingHorizontal: 10,
             }}
           />
@@ -91,8 +90,8 @@ function Login() {
             containerStyles={{
               borderWidth: 1,
               paddingHorizontal: 5,
-              backgroundColor: '#24132a',
-              borderColor: '#f6584e',
+              backgroundColor: '#DFDFDF',
+              borderColor: '#66b5ac',
               borderRadius: 8,
               height: 50,
             }}
@@ -105,7 +104,7 @@ function Login() {
               paddingHorizontal: 5,
             }}
             inputStyles={{
-              color: '#fff',
+              color: '#000',
               paddingHorizontal: 10,
             }}
           />
@@ -113,7 +112,7 @@ function Login() {
         </View>
         <LinearGradient
           style={styles.loginButtonContainer}
-          colors={['#f67b5b', '#f6584e', '#f53f43']}
+          colors={['#018576', '#1a9183', '#339d91']}
           start={{x: 1, y: 0}}
           end={{x: 0, y: 1}}>
           <Pressable
@@ -124,15 +123,15 @@ function Login() {
                 height: '100%',
                 borderRadius: 20,
               },
-              Platform.OS === 'ios' && pressed && {backgroundColor: '#f53f43'},
+              Platform.OS === 'ios' && pressed && {backgroundColor: '#BFDAD3'},
             ]}
-            android_ripple={{color: '#f53f43', borderless: false}}
+            android_ripple={{color: '#BFDAD3', borderless: false}}
             onPress={() => authenticate()}>
             <Text
               style={{
                 fontSize: 16,
                 textAlign: 'center',
-                color: '#FFF',
+                color: '#fff',
                 fontWeight: 'bold',
               }}>
               Login
@@ -150,7 +149,7 @@ loginButtonContainer: {
   height: 50,
   borderRadius: 20,
   alignSelf: 'center',
-  shadowColor: '#f67458',
+  shadowColor: '#018576',
   shadowOffset: { width: 0, height: 4 },
   shadowOpacity: 0.3,
   shadowRadius: 10,

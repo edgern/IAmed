@@ -53,7 +53,7 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#1a0b21'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F7F7F5'}}>
       <Calendar
         onSelectDate={date => setSelectedDate(date)}
         selected={selectedDate}

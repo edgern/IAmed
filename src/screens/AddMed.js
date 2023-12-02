@@ -49,8 +49,8 @@ const AddMed = ({navigation}) => {
           onChangeText={setNome}
           containerStyles={{
             borderWidth: 1,
-            borderColor: '#f6584e',
-            backgroundColor: '#24132a',
+            borderColor: '#66b5ac',
+            backgroundColor: '#DFDFDF',
             borderRadius: 5,
             height: 40,
           }}
@@ -66,7 +66,7 @@ const AddMed = ({navigation}) => {
             height: 40,
             paddingHorizontal: 10,
             marginTop: 10,
-            color: '#fff',
+            color: '#000',
           }}
         />
       </View>
@@ -84,7 +84,7 @@ const AddMed = ({navigation}) => {
       <TouchableOpacity
         style={[styles.input, {justifyContent: 'center'}]}
         onPress={() => setDatePickerVisibility(true)}>
-        <Text style={{color: horarioInicial ? '#fff' : '#605263'}}>
+        <Text style={{color: horarioInicial ? '#000' : '#605263'}}>
           {horarioInicial ? horarioInicial : 'Horário inicial'}
         </Text>
       </TouchableOpacity>
@@ -107,9 +107,9 @@ const AddMed = ({navigation}) => {
           paddingHorizontal: 10,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#f6584e',
-          backgroundColor: '#24132a',
-          color: intervalo.length === 0 ? '#605263' : '#fff',
+          borderColor: '#66b5ac',
+          backgroundColor: '#DFDFDF',
+          color: intervalo.length === 0 ? '#605263' : '#000',
         }}
       />
 
@@ -129,9 +129,9 @@ const AddMed = ({navigation}) => {
           paddingHorizontal: 10,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#f6584e',
-          backgroundColor: '#24132a',
-          color: quantidadeDoses.length === 0 ? '#605263' : '#fff',
+          borderColor: '#66b5ac',
+          backgroundColor: '#DFDFDF',
+          color: quantidadeDoses.length === 0 ? '#605263' : '#000',
         }}
       />
 
@@ -154,14 +154,14 @@ const AddMed = ({navigation}) => {
           paddingHorizontal: 10,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#f6584e',
-          backgroundColor: '#24132a',
-          color: compartimento.length === 0 ? '#605263' : '#fff',
+          borderColor: '#66b5ac',
+          backgroundColor: '#DFDFDF',
+          color: compartimento.length === 0 ? '#605263' : '#000',
         }}
       />
       <LinearGradient
         style={styles.addButtonContainer}
-        colors={['#f67b5b', '#f6584e', '#f53f43']}
+        colors={['#018576', '#1a9183', '#339d91']}
         start={{x: 1, y: 0}}
         end={{x: 0, y: 1}}>
         <TouchableOpacity
@@ -178,18 +178,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#1a0b21',
+    backgroundColor: '#F7F7F5',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#fff',
+    color: '#000',
   },
   input: {
-    backgroundColor: '#24132a',
+    backgroundColor: '#DFDFDF',
     borderWidth: 1,
-    borderColor: '#f6584e',
+    borderColor: '#66b5ac',
     borderRadius: 5,
     height: 40,
     marginBottom: 10,
@@ -206,14 +206,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#f67458',
-    shadowOffset: { width: 0, height: 4 },
+    shadowColor: '#018576',
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 10,
     elevation: 5,
   },
   addButton: {
-    width:'100%',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },

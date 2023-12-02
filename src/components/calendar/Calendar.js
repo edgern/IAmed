@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#000',
   },
   dateSection: {
     width: '100%',

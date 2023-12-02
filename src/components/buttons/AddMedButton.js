@@ -7,7 +7,7 @@ const AddMedButton = ({ onPress }) => {
   return (
     <LinearGradient
       style={styles.addButtonContainer}
-      colors={['#f67b5b', '#f6584e', '#f53f43']}
+      colors={['#018576', '#1a9183', '#339d91']}
       start={{ x: 1, y: 0 }}
       end={{ x: 0, y: 1 }}>
       <TouchableOpacity
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 75,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#f67458',
+    shadowColor: '#018576',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 10,
